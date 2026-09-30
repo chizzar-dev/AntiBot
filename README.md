@@ -87,4 +87,4 @@ Her push [GitHub Actions](https://github.com/chizzar-dev/AntiBot/actions/workflo
 ## License · Lisans
 [MIT](LICENSE) — istediğin gibi kullan, değiştir, dağıt · use, modify and distribute freely
 
-<div align="center"><sub>chizzar-dev · Minecraft plugins for 1.8 – 1.21.11 · <a href="https://discord.gg/forges">Discord</a></sub></div>
+<div align="center"><sub>chizzar-dev · Minecraft plugins for 1.8 – 1.21.11</sub></div>
