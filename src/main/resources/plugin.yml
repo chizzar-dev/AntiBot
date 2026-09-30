@@ -1,0 +1,24 @@
+name: AntiBot
+version: ${project.version}
+main: com.metox.antibot.AntiBot
+api-version: 1.13
+author: chizzar-dev
+website: https://discord.gg/forges
+description: Bot saldirilarina karsi baglanti limiti ve GUI dogrulama.
+
+commands:
+  antibot:
+    description: AntiBot durumu ve yonetimi
+    usage: /antibot status | lock | unlock | reload
+    aliases: [ab]
+
+permissions:
+  antibot.bypass:
+    description: Dogrulamadan muaf tutulur
+    default: op
+  antibot.notify:
+    description: Saldiri bildirimlerini gorur
+    default: op
+  antibot.admin:
+    description: AntiBot yonetimi
+    default: op

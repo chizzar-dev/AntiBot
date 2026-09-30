@@ -1,0 +1,84 @@
+# AntiBot - chizzar-dev
+# https://github.com/chizzar-dev/AntiBot
+#
+# Dort katman halinde calisir:
+#   1. Baglanti hizi  - kisa surede cok giris olursa kilit moduna gecer
+#   2. IP limitleri   - ayni IP'den es zamanli ve dakikalik giris siniri
+#   3. Isim filtresi  - Player1234 gibi bot kaliplarini reddeder
+#   4. GUI dogrulama  - yeni oyuncu dogru esyayi tiklayana kadar donar
+#
+# Bir kez dogrulanan oyuncu verified.yml'ye yazilir ve bir daha sorulmaz.
+
+# 1) Baglanti hizi
+join-rate:
+  enabled: true
+  # interval-seconds icinde bu sayidan fazla giris olursa kilit modu acilir
+  max-joins: 6
+  interval-seconds: 3
+  # Kilit modu kac saniye surer
+  lockdown-seconds: 60
+
+# 2) IP limitleri
+per-ip:
+  # Ayni IP'den es zamanli en fazla kac oyuncu (0 = sinirsiz)
+  max-online: 3
+  # Ayni IP'den dakikada en fazla kac giris denemesi (0 = sinirsiz)
+  max-joins-per-minute: 6
+
+# 3) Isim filtresi (regex). Tum isim kalibi tutmalidir.
+name-filter:
+  enabled: false
+  blocked-patterns:
+    - "^Player[0-9]{3,}$"
+    - "^[a-z]{8,16}$"
+
+# 4) GUI dogrulama
+captcha:
+  enabled: true
+  # true  = yalnizca ilk girisde sorulur
+  # false = her girisde sorulur
+  only-first-join: true
+  # true = yalnizca kilit modundayken sorulur
+  only-during-attack: false
+  # Kac yanlis denemeden sonra atilsin (0 = sinirsiz)
+  attempts: 3
+  # Kac saniye icinde cozulmeli (0 = sinirsiz)
+  timeout: 45
+  # Pencerede gosterilecek esyalar. Sunucunda bulunmayanlar atlanir.
+  items:
+    - "STONE"
+    - "DIRT"
+    - "SAND"
+    - "GRAVEL"
+    - "COBBLESTONE"
+    - "GLASS"
+    - "BRICK"
+    - "CLAY"
+    - "OBSIDIAN"
+    - "NETHERRACK"
+
+# Bu IP'ler tum kontrollerden muaf (ornek: kendi proxy'n)
+whitelist-ips: []
+
+# Saldiri bildirimleri 'antibot.notify' yetkisi olanlara gonderilsin mi
+notify-staff: true
+
+# Engellenen denemeler konsola yazilsin mi
+log: true
+
+messages:
+  kick-lockdown: "&cSunucu su an saldiri altinda.\n&7Lutfen birkac dakika sonra tekrar dene."
+  kick-ip-limit: "&cAyni IP'den cok fazla baglanti var."
+  kick-ip-rate: "&cCok hizli baglaniyorsun, biraz bekle."
+  kick-name: "&cBu kullanici adi kabul edilmiyor."
+  captcha-title: "&8Dogrulama"
+  captcha-hint: "&eDevam etmek icin isaretli esyaya tikla."
+  captcha-answer-name: "&a&lBUNA TIKLA"
+  captcha-answer-lore: "&7Insan oldugunu dogrula"
+  captcha-wrong: "&cYanlis. Kalan hak: &e%left%"
+  captcha-passed: "&aDogrulama tamam, iyi oyunlar!"
+  captcha-failed: "&cDogrulama basarisiz."
+  captcha-timeout: "&cDogrulama suresi doldu."
+  lockdown-start: "&c[AntiBot] Saldiri algilandi, kilit modu %time%s acildi."
+  lockdown-end: "&a[AntiBot] Kilit modu kapandi."
+  no-permission: "&cBunun icin yetkin yok."
